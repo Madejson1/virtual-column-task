@@ -1,7 +1,7 @@
 import pandas as pd
 import re
 
-# I changed 'pandas' to 'pd' in the function parameters
+# I changed 'pandas' to 'pd' in the function parameters.
 def add_virtual_column(df: pd.DataFrame, role: str, new_column: str) -> pd.DataFrame:
     pattern = r"[A-Za-z_]+" # only characters and underscores for column names
 
@@ -11,17 +11,17 @@ def add_virtual_column(df: pd.DataFrame, role: str, new_column: str) -> pd.DataF
 
     parts = re.split(r"\s*([+\-*])\s*", role.strip()) # Regex expression is used to find the operator in 'role', even if it is surrounded by whitespace.
 
-    # Safety check in case 'role' is something like 'a+b+c'
+    # Safety check in case 'role' is something like 'a+b+c'.
     if len(parts) != 3:
         return pd.DataFrame([])
 
     first_column, operator, second_column = parts # Because the operator is inside a capturing group () in the Regex expression, re.split() returns three elements split by the operator (with it also being included).
 
-    # Check column names from the 'role'
+    # Check column names from the 'role'.
     if not (re.fullmatch(pattern, first_column) and re.fullmatch(pattern, second_column) and re.fullmatch(pattern, new_column)):
         return pd.DataFrame([])
 
-    # Check if column names from the 'role' correspond to the input df
+    # Check if column names from the 'role' correspond to the input df.
     if first_column not in df.columns or second_column not in df.columns:
         return pd.DataFrame([])
 
