@@ -6,9 +6,9 @@ Function `add_virtual_column` creates a new column in a pandas DataFrame based o
 label_one + label_two
 
 Supported operators:
-- +
-- -
-- *
++
+-
+*
 
 Column names must contain only letters and underscores.
 
